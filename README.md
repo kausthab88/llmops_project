@@ -49,4 +49,12 @@ git push
 
 ```
 git clone https://github.com/sunnysavita10/document_portal.git
+
 ```
+
+### minimum requirement for this project
+
+1. LLM Model - any llm model
+2. Embedding model - hf, gemini api
+3. Vector DB - inmemory(chroma,pinecone) or ondisk or cloud base(aws bedrock,mongodb)
+4. 
