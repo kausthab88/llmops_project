@@ -8,5 +8,5 @@ pypdf
 faiss-cpu
 pymupdf
 structlog
-
+os
 -e .

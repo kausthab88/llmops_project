@@ -1,4 +1,4 @@
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from utils.config_loader import load_config
 from langchain_groq import ChatGroq
 from logger.custom_logger import CustomLogger
@@ -38,6 +38,12 @@ class Model_Loader:
                 return OpenAIEmbeddings(
                     model=model_name,
                     api_key=self.api_keys["OPENAI_API_KEY"]
+                )
+            
+            elif provider == "google":  
+                return GoogleGenerativeAIEmbeddings(
+                model=model_name,
+                google_api_key=self.api_keys["GOOGLE_API_KEY"]
             )
             else:
                 raise ValueError(f"Unsupported embedding provider: {provider}")
@@ -99,5 +105,8 @@ if __name__ == "__main__":
     llm = loader.load_llm()
     print(f"LLM Loaded: {llm}")
 
-    result= llm.invoke("Hello, How are  you?")
+    result= llm.invoke("Helloo, what day is it today?")
     print(f"LLM result: {result.content}")
+
+    embed_result = embeddings.embed_query("Helloo, what day is it today?")
+    print(f"Embedding result: {embed_result}")
